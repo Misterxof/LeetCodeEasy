@@ -40,20 +40,26 @@ class Solution {
         return res
     }
 
-    fun getRomanInt(symbol: Char) = romanNumerics.find { it.first == symbol }?.second
+    private fun getRomanInt(symbol: Char) = romanNumerics.find { it.first == symbol }?.second
 
-    fun getRomanSpecialInt(str: String) = romanSpecial.find { it.first == str }?.second
+    private fun getRomanSpecialInt(str: String) = romanSpecial.find { it.first == str }?.second
 
-    val romanNumerics: List<Pair<Char, Int>> = listOf(
+    private val romanNumerics: List<Pair<Char, Int>> = listOf(
         Pair('I', 1),
         Pair('V', 5),
         Pair('X', 10),
         Pair('L', 50),
         Pair('C', 100),
         Pair('D', 500),
-        Pair('M', 1000),
+        Pair('M', 1000)
     )
-    val romanSpecial: List<Pair<String, Int>> =
-        listOf(Pair("IV", 4), Pair("IX", 9), Pair("XL", 40), Pair("XC", 90), Pair("CD", 400), Pair("CM", 900))
+    private val romanSpecial: List<Pair<String, Int>> = listOf(
+        Pair("IV", 4),
+        Pair("IX", 9),
+        Pair("XL", 40),
+        Pair("XC", 90),
+        Pair("CD", 400),
+        Pair("CM", 900)
+    )
 }
 
