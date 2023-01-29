@@ -17,6 +17,22 @@ open class ListNode(val head: Array<Int>) {
         return node
     }
 
+    // 876. Middle of the Linked List
+    fun getMiddle(): Node{
+        val array: MutableList<Node> = mutableListOf()
+        var node: Node? = firstNode
+
+        while (node != null) {
+            array.add(node)
+            node = node.next
+        }
+
+        var middleItem = array.size / 2
+
+        return array[middleItem]
+    }
+
+    // 234. Palindrome Linked List
     fun check(): Boolean {
         val deque: ArrayDeque<Int> = ArrayDeque()
         val result = false
