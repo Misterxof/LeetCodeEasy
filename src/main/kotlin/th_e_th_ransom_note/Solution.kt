@@ -4,10 +4,11 @@ class Solution {
     fun canConstruct(ransomNote: String, magazine: String): Boolean {
         var result = ransomNote
         var builder = magazine.toCharArray()
+        
         builder.forEach {char ->
             result = result.replaceFirst(char.toString(),"")
         }
-        println(result)
+
         return result.isBlank()
     }
 }
