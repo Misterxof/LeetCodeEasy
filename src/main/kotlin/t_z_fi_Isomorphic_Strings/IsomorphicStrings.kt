@@ -24,16 +24,26 @@ class IsomorphicStrings {
 
         return second
     }
+
+    fun isIsomorphicSecond(s: String, t: String): Boolean {
+        if (s.length != t.length) return false
+
+        val unitedSize = s.zip(t).toSet().size
+        val sSize = s.toSet().size
+        val tSize = t.toSet().size
+
+        return sSize == tSize && sSize == unitedSize
+    }
 }
 
 fun main(args: Array<String>) {
-    println("true "+IsomorphicStrings().isIsomorphic("egg","add"))
-    println("false " +IsomorphicStrings().isIsomorphic("foo","bar"))
-    println("true "+IsomorphicStrings().isIsomorphic("paper","title"))
-    println("false " +IsomorphicStrings().isIsomorphic("badc","baba"))
-    println("false " +IsomorphicStrings().isIsomorphic("egcd","adfd"))
-    println("true "+IsomorphicStrings().isIsomorphic("bbbaaaba","bbbaaaba"))
-    println("true "+IsomorphicStrings().isIsomorphic("a","a"))
-    println("false " +IsomorphicStrings().isIsomorphic("bbbaaaba","aaabbbba"))
-    println("false " +IsomorphicStrings().isIsomorphic("abcdefghijklmnopqrstuvwxyzva","abcdefghijklmnopqrstuvwxyzck"))
+    println("true "+IsomorphicStrings().isIsomorphicSecond("egg","add"))
+    println("false " +IsomorphicStrings().isIsomorphicSecond("foo","bar"))
+    println("true "+IsomorphicStrings().isIsomorphicSecond("paper","title"))
+    println("false " +IsomorphicStrings().isIsomorphicSecond("badc","baba"))
+    println("false " +IsomorphicStrings().isIsomorphicSecond("egcd","adfd"))
+    println("true "+IsomorphicStrings().isIsomorphicSecond("bbbaaaba","bbbaaaba"))
+    println("true "+IsomorphicStrings().isIsomorphicSecond("a","a"))
+    println("false " +IsomorphicStrings().isIsomorphicSecond("bbbaaaba","aaabbbba"))
+    println("false " +IsomorphicStrings().isIsomorphicSecond("abcdefghijklmnopqrstuvwxyzva","abcdefghijklmnopqrstuvwxyzck"))
 }
