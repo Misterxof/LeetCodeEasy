@@ -20,12 +20,26 @@ open class ListNode(val head: Array<Int>) {
 
     private fun getListNode(list: List<Int>): Node? {
         var node: Node? = null
-        list.forEach{
+        list.forEach {
             val nextNode = Node(it.toInt())
             nextNode.next = node
             node = nextNode
         }
         return node
+    }
+
+    // 206. Reverse Linked List
+    fun reverseList(node: Node?): Node? {
+        var resultNode: Node? = null
+        var node = node
+
+        while (node != null) {
+            val nextNode = Node(node.data)
+            nextNode.next = resultNode
+            resultNode = nextNode
+            node = node.next
+        }
+        return resultNode
     }
 
     // 21. Merge Two Sorted Lists
@@ -41,7 +55,7 @@ open class ListNode(val head: Array<Int>) {
         var resultList: MutableList<Int> = mutableListOf()
 
         while (l1 != null || l2 != null) {
-            if (l1 != null && l2 != null)  {
+            if (l1 != null && l2 != null) {
                 if (l1.data < l2.data) {
                     resultList.add(l1.data)
                     l1 = l1.next
@@ -62,7 +76,7 @@ open class ListNode(val head: Array<Int>) {
     }
 
     // 876. Middle of the Linked List
-    fun getMiddle(): Node{
+    fun getMiddle(): Node {
         val array: MutableList<Node> = mutableListOf()
         var node: Node? = firstNode
 
