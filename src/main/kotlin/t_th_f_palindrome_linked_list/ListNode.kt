@@ -1,20 +1,64 @@
 package t_th_f_palindrome_linked_list
 
 open class ListNode(val head: Array<Int>) {
-    private var firstNode: Node
+    var firstNode: Node?
     private var size = head.size
 
     init {
         firstNode = initNodes(0)
     }
 
-    private fun initNodes(index: Int): Node {
+    private fun initNodes(index: Int): Node? {
+        if (head.isEmpty()) return null
         var node = if (index + 1 <= head.indices.last) {
             Node(head[index], initNodes(index + 1))
         } else {
             Node(head[index], null)
         }
         return node
+    }
+
+    private fun getListNode(list: List<Int>): Node? {
+        var node: Node? = null
+        list.forEach{
+            val nextNode = Node(it.toInt())
+            nextNode.next = node
+            node = nextNode
+        }
+        return node
+    }
+
+    // 21. Merge Two Sorted Lists
+    public fun mergeTwoLists(l1: Node?, l2: Node?): Node? {
+        when {
+            l1 == null && l2 == null -> return null
+            l1 == null -> return l2
+            l2 == null -> return l1
+        }
+
+        var l1 = l1
+        var l2 = l2
+        var resultList: MutableList<Int> = mutableListOf()
+
+        while (l1 != null || l2 != null) {
+            if (l1 != null && l2 != null)  {
+                if (l1.data < l2.data) {
+                    resultList.add(l1.data)
+                    l1 = l1.next
+                } else {
+                    resultList.add(l2.data)
+                    l2 = l2.next
+                }
+            } else if (l1 != null) {
+                resultList.add(l1.data)
+                l1 = l1.next
+            } else if (l2 != null) {
+                resultList.add(l2.data)
+                l2 = l2.next
+            }
+        }
+
+        return getListNode(resultList.reversed())
     }
 
     // 876. Middle of the Linked List
@@ -72,9 +116,9 @@ open class ListNode(val head: Array<Int>) {
 
     private fun checkFirstAndLast(): Boolean {
         var result = false
-        val last = getLast(firstNode)
+        val last = getLast(firstNode!!)
 
-        if (firstNode.data == last.data) {
+        if (firstNode!!.data == last.data) {
             if (size == 2) {
                 size = 0
                 return true
@@ -93,19 +137,19 @@ open class ListNode(val head: Array<Int>) {
     }
 
     private fun removeFirst() {
-        if (firstNode.next != null) {
-            firstNode = firstNode.next!!
+        if (firstNode!!.next != null) {
+            firstNode = firstNode!!.next!!
             size--
         }
     }
 
     private fun removeLast() {
-        if (firstNode.next == null) {
+        if (firstNode!!.next == null) {
             size--
             return
         } else {
             var isEnd = false
-            var temp: Node = firstNode
+            var temp: Node = firstNode!!
             var prev: Node? = null
 
             while (!isEnd) {
