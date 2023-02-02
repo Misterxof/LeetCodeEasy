@@ -4,7 +4,7 @@ class PascalsTriangle {
     fun generate(numRows: Int): List<List<Int>> {
         val result: MutableList<MutableList<Int>> = MutableList(numRows){ mutableListOf<Int>() }
         var column = 0
-       // result[0].add(0, 1)
+
         result.forEachIndexed { i, it ->
             column++
             for (j in 0 until column)  {
@@ -15,9 +15,8 @@ class PascalsTriangle {
 
                 result[i].add(j, result[i-1][j-1] + result[i-1][j])
             }
-            println(result[i])
         }
-        println(result)
+        
         return result
     }
 }
