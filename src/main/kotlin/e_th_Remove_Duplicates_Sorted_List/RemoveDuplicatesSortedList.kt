@@ -20,6 +20,19 @@ class RemoveDuplicatesSortedList {
     //
     //        return getListNode(set.reversed())
     //    }
+
+    // faster
+    // fun deleteDuplicates(head: ListNode?): ListNode? {
+    //        val result = head
+    //        var node = head
+    //
+    //        while (node?.next != null){
+    //            if (node?.`val` == node?.next?.`val`) node?.next = node?.next?.next
+    //            else node = node?.next
+    //        }
+    //
+    //        return result
+    //    }
 }
 
 fun main() {
