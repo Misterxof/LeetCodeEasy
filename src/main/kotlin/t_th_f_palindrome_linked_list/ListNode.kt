@@ -28,6 +28,20 @@ open class ListNode(val head: Array<Int>) {
         return node
     }
 
+    // 83. Remove Duplicates from Sorted List
+    fun removeDuplicates(node: Node?): Node? {
+        var node = node
+        val set = mutableSetOf<Int>()
+
+        while (node != null){
+            set.add(node.data)
+            node = node.next
+        }
+
+        println(set)
+        return getListNode(set.toList())
+    }
+
     // 206. Reverse Linked List
     fun reverseList(node: Node?): Node? {
         var resultNode: Node? = null
