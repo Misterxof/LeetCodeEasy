@@ -28,12 +28,26 @@ open class ListNode(val head: Array<Int>) {
         return node
     }
 
+    // 203. Remove Linked List Elements
+    fun removeElements(head: Node?, `val`: Int): Node? {
+        if (head == null) return null
+        var result: Node?
+        var node = head
+
+        if (node?.data != `val`) {
+            result = Node(node!!.data)
+            result.next = removeElements(node?.next, `val`)
+        } else result = removeElements(node.next, `val`)
+
+        return result
+    }
+
     // 83. Remove Duplicates from Sorted List
     fun removeDuplicates(node: Node?): Node? {
         var node = node
         val set = mutableSetOf<Int>()
 
-        while (node != null){
+        while (node != null) {
             set.add(node.data)
             node = node.next
         }
