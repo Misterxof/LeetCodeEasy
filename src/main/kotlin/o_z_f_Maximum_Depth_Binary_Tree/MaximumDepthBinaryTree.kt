@@ -11,7 +11,7 @@ class MaximumDepthBinaryTree {
             maxDepthLeft = maxOf(maxDepthLeft, maxDepth(it.left) + 1)
             maxDepthRight = maxOf(maxDepthLeft, maxDepth(it.right) + 1)
         }
-        
+
         return maxOf(maxDepthLeft, maxDepthRight)
     }
 }
