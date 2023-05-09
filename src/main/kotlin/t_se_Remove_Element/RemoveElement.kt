@@ -1,7 +1,22 @@
 package t_se_Remove_Element
 
 class RemoveElement {
+
     fun removeElement(nums: IntArray, `val`: Int): Int {
+        var newLength = 0
+        var k = 0
+
+        for (i in nums.indices) {
+            if (nums[i] != `val`) {
+                nums[k++] = nums[i]
+                newLength++
+            }
+        }
+
+        return newLength
+    }
+
+    fun removeElement2(nums: IntArray, `val`: Int): Int {
         var length = nums.size
         var i = 0
 
