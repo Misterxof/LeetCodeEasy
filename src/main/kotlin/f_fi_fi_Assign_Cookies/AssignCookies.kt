@@ -2,21 +2,18 @@ package f_fi_fi_Assign_Cookies
 
 class AssignCookies {
     fun findContentChildren(g: IntArray, s: IntArray): Int {
-        var count = 0
+        var i = 0
+        var j = 0
+
         g.sort()
         s.sort()
 
-        s.forEach { cookie ->
-            for (i in g.indices) {
-                if (g[i] in 1..cookie) {
-                    count++
-                    g[i] = -1
-                    break
-                }
-            }
+        while (i <= g.size - 1 && j <= s.size - 1) {
+            if (g[i] <= s[j]) i++
+            j++
         }
 
-        return count
+        return i
     }
 }
 
